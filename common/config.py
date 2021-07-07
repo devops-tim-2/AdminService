@@ -37,10 +37,10 @@ def setup_config(cfg_name: str):
 
 
     # This import must be postponed after init_db has been called
-    # from models.models import Campaign, CampaignActivation, User
-    # if cfg_name == 'test':
-    #     CampaignActivation.query.delete()
-    #     Campaign.query.delete()
-    #     User.query.delete()
+    from models.models import AgentRequest, InappropriateReport, User
+    if cfg_name == 'test':
+        AgentRequest.query.delete()
+        InappropriateReport.query.delete()
+        User.query.delete()
 
     return app
