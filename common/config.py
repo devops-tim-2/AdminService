@@ -30,10 +30,13 @@ def setup_config(cfg_name: str):
 
     
     # This import must be postponed after init_db has been called
-    # from controller.campaign_controller import CampaignResource, PostCampaignResource, UserResource
-    # api.add_resource(CampaignResource, '/api/<campaign_id>')
-    # api.add_resource(PostCampaignResource, '/api')
-    # api.add_resource(UserResource, '/api/profile/<user_id>')
+    from controller.admin_controller import ApproveResource, RejectResource, BanResource, DeleteResource, LoginResource, RegisterResource
+    api.add_resource(ApproveResource, '/api/user/approve/<agent_id>')
+    api.add_resource(RejectResource, '/api/user/reject/<agent_id>')
+    api.add_resource(BanResource, '/api/user/ban/<agent_id>')
+    api.add_resource(DeleteResource, '/api/post/delete/<post_id>')
+    api.add_resource(LoginResource, '/api/login')
+    api.add_resource(RegisterResource, '/api/register')
 
 
     # This import must be postponed after init_db has been called
