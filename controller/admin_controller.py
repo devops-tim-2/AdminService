@@ -113,4 +113,20 @@ class RegisterResource(Resource):
             return user_service.register(args), 200
         except InvalidDataException as e:
             return str(e), 400
+
+class RequestsResource(Resource):
+    def __init__(self):
+        # To be implemented.
+        pass
+ 
+    def get(self):
+        return admin_service.get_all_requests(), 200
+
+class ReportsResource(Resource):
+    def __init__(self):
+        # To be implemented.
+        pass
+ 
+    def get(self):
+        return admin_service.get_all_reports(), 200
  
