@@ -13,6 +13,7 @@ class AgentRequest(Model):
     username: str
     age: int
     sex: str
+    region: str
     interests: str
     bio: str
     website: str
@@ -22,11 +23,12 @@ class AgentRequest(Model):
     public: bool
     taggable: bool
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    agent_id = Column(Integer, nullable=False)
+    id = Column(Integer, primary_key=True)
+    agent_id = Column(Integer, nullable=False, unique=True)
     username = Column(String(200), nullable=False, unique=True)
     age = Column(Integer, nullable=False)
     sex = Column(String(200), nullable=False)
+    region = Column(String(200), nullable=False)
     interests = Column(String(200), nullable=False)
     bio = Column(String(200), nullable=False)
     website = Column(String(200), nullable=False)
@@ -42,7 +44,7 @@ class AgentRequest(Model):
 
 
     def __str__(self) -> str:
-        return f'AgentRequest: id={self.id}, agent_id={self.agent_id}, username={self.username}, age={self.age}, sex={self.sex}, interests={self.interests}, bio={self.bio}, website={self.website}, phone={self.phone}, mail={self.mail}, profile_image_link={self.profile_image_link}, public={self.public}, taggable={self.taggable}'
+        return f'AgentRequest: id={self.id}, agent_id={self.agent_id}, username={self.username}, age={self.age}, sex={self.sex}, region={self.region}, interests={self.interests}, bio={self.bio}, website={self.website}, phone={self.phone}, mail={self.mail}, profile_image_link={self.profile_agent_request}, public={self.public}, taggable={self.taggable}'
 
 
 @dataclass
@@ -50,14 +52,14 @@ class InappropriateReport(Model):
     __tablename__ = 'inappropriatereport'
     id: int
     description: str
-    image_link: str
-    user_id: int
+    image_url: str
+    post_id: int
     reporter_id: int
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     description = Column(String(200), nullable=False)
-    image_link = Column(String(200), nullable=False)
-    user_id = Column(Integer, nullable=False)
+    image_url = Column(String(200), nullable=False)
+    post_id = Column(Integer, nullable=False)
     reporter_id = Column(Integer, nullable=False)
 
     def get_dict(self):
@@ -65,7 +67,7 @@ class InappropriateReport(Model):
 
 
     def __str__(self) -> str:
-        return f'InappropriateReport: id={self.id}, description={self.description}, image_link={self.image_link}, user_id={self.user_id}, reporter_id={self.reporter_id}'
+        return f'InappropriateReport: id={self.id}, description={self.description}, image_url={self.image_url}, post_id={self.post_id}, reporter_id={self.reporter_id}'
 
 
 @dataclass
