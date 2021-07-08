@@ -51,7 +51,7 @@ def ban(user_id: int, user: dict):
     if not user_service.get(user['id']):
         raise InvalidAuthException('Your are not allowed to ban any user.')
     
-    publish('user.ban', user_id)
+    publish('user.ban', {'id': user_id})
 
 
 def delete(post_id: int, user: dict):
@@ -62,4 +62,4 @@ def delete(post_id: int, user: dict):
 
     admin_repository.delete_with_post(post_id)
 
-    publish('post.delete', post_id)
+    publish('post.delete', {'id': post_id})
