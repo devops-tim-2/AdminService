@@ -63,3 +63,15 @@ def delete(post_id: int, user: dict):
     admin_repository.delete_with_post(post_id)
 
     publish('post.delete', {'id': post_id})
+
+
+def get_all_requests():
+    requests = admin_repository.get_all_requests()
+
+    return [request.get_dict() for request in requests]
+
+
+def get_all_reports():
+    reports = admin_repository.get_all_reports()
+
+    return [report.get_dict() for report in reports]

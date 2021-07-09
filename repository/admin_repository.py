@@ -32,3 +32,11 @@ def delete_with_agent(agent_id: int):
 def delete_with_post(post_id: int):
     InappropriateReport.query.filter_by(post_id=post_id).delete()
     db_session.commit()
+
+
+def get_all_requests():
+    return AgentRequest.query.all()
+
+
+def get_all_reports():
+    return InappropriateReport.query.all()
