@@ -30,13 +30,15 @@ def setup_config(cfg_name: str):
 
     
     # This import must be postponed after init_db has been called
-    from controller.admin_controller import ApproveResource, RejectResource, BanResource, DeleteResource, LoginResource, RegisterResource
+    from controller.admin_controller import ApproveResource, RejectResource, BanResource, DeleteResource, LoginResource, RegisterResource, RequestsResource, ReportsResource
     api.add_resource(ApproveResource, '/api/user/approve/<agent_id>')
     api.add_resource(RejectResource, '/api/user/reject/<agent_id>')
     api.add_resource(BanResource, '/api/user/ban/<agent_id>')
     api.add_resource(DeleteResource, '/api/post/delete/<post_id>')
     api.add_resource(LoginResource, '/api/login')
     api.add_resource(RegisterResource, '/api/register')
+    api.add_resource(RequestsResource, '/api/requests')
+    api.add_resource(ReportsResource, '/api/reports')
 
 
     # This import must be postponed after init_db has been called
